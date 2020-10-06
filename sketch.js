@@ -4,7 +4,7 @@ let settings = {
   w: null,
   h: null,
   speed_X: 2,
-  speed_Y: 2,
+  speed_Y: 3,
   img: null
 }
 
@@ -30,11 +30,11 @@ function draw() {
   noFill();
   image(settings.img, settings.x, settings.y, 150, 75);
 
-  if (settings.x > width - 75 || settings.x < 75) {
+  if (settings.x >= width - 75 || settings.x <= 75) {
     settings.speed_X *= -1;
   }
 
-  if (settings.y > height - 40 || settings.y < 40) {
+  if (settings.y >= height - 40 || settings.y <= 40) {
     settings.speed_Y *= -1;
   }
 
