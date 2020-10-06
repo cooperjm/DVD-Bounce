@@ -1,53 +1,71 @@
-let settings = {
-  x: null,
-  y: null,
+let dvd;
+let dvd2;
+
+
+let portal = {
   w: null,
   h: null,
-  speed_X: 2,
-  speed_Y: 3,
-  img: null
 }
 
 
 function preload() {
   size();
-  settings.img = loadImage("dvdlogo-04.svg");
-  center();
-
 }
 
 function setup() {
-  createCanvas(settings.w, settings.h);
   imageMode(CENTER);
+  createCanvas(portal.w, portal.h);
+  dvd = new DvdLogo(100, 100);
+  dvd2 = new DvdLogo(windowWidth - 100, windowHeight - 100);
 }
 
 function draw() {
   size();
-  createCanvas(settings.w, settings.h);
+  createCanvas(portal.w, portal.h);
   background(0);
-  stroke(255);
-  strokeWeight(4);
-  noFill();
-  image(settings.img, settings.x, settings.y, 150, 75);
-
-  if (settings.x >= width - 75 || settings.x <= 75) {
-    settings.speed_X *= -1;
-  }
-
-  if (settings.y >= height - 40 || settings.y <= 40) {
-    settings.speed_Y *= -1;
-  }
-
-  settings.x += settings.speed_X;
-  settings.y += settings.speed_Y;
+  dvd.show();
+  dvd.move();
+  dvd2.show();
+  dvd2.move();
 }
 
-function center() {
-  settings.x = (windowWidth / 2);
-  settings.y = (windowHeight / 2);
+// Logo class, takes x and y as arguments
+class DvdLogo {
+  constructor(posX, posY) {
+    this.x = posX;
+    this.y = posY;
+    this.w = 150;
+    this.h = 75;
+    this.speed_X = 2;
+    this.speed_Y = 3;
+    this.img = loadImage("dvdlogo-04.svg");
+    this.imgWidth = 150;
+    this.imgHeight = 75;
+  }
+
+  // Reverses direction when logo gets close to boundries of window
+  move() {
+    if (this.x >= width - 75 || this.x <= 75) {
+      this.speed_X *= -1;
+    }
+    if (this.y >= height - 40 || this.y <= 40) {
+      this.speed_Y *= -1;
+    }
+    this.x += this.speed_X;
+    this.y += this.speed_Y;
+  }
+
+  // Puts the image on the canvas
+  show() {
+    image(this.img, this.x, this.y, this.w, this.h);
+  }
+
+
 }
 
+// Fetches dimensons of browser window into portal object
+// This is to live adjust the canvas size
 function size() {
-  settings.w = windowWidth;
-  settings.h = windowHeight;
+  portal.w = windowWidth;
+  portal.h = windowHeight;
 }
