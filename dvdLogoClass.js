@@ -11,6 +11,8 @@ class DvdLogo {
   }
 
   // Reverses direction when logo gets close to boundries of window
+  // TODO: there is a bug in here where if the logo is right on the line of the screenwidth it will get stuck there
+
   move() {
     if (this.x + 75 >= width || this.x <= 75) {
       this.speed_X *= -1;
