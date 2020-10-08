@@ -14,16 +14,16 @@ class DvdLogo {
 
   move() {
     // Sets the bounce boundary for X-axis
-    if (this.x > width - 75) {
+    if (this.x > width - this.imgWidth / 2) {
       this.speed_X = -this.initSpeed_X;
-    } else if (this.x < 75) {
+    } else if (this.x < this.imgWidth / 2) {
       this.speed_X = this.initSpeed_X;
     }
 
     // Sets the bounce boundary for Y-axis
-    if (this.y + 40 > height) {
+    if (this.y + this.imgHeight / 2 > height) {
       this.speed_Y = -this.initSpeed_Y;
-    } else if (this.y <= 40) {
+    } else if (this.y <= this.imgHeight / 2) {
       this.speed_Y = this.initSpeed_Y;
     }
 
