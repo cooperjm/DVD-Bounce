@@ -3,24 +3,31 @@ class DvdLogo {
   constructor(posX, posY) {
     this.x = posX;
     this.y = posY;
-    this.speed_X = 2;
-    this.speed_Y = 3;
+    this.initSpeed_X = 2;
+    this.initSpeed_Y = 3;
+    this.speed_X = this.initSpeed_X;
+    this.speed_Y = this.initSpeed_Y;
     this.img = loadImage("dvdlogo-04.svg");
     this.imgWidth = 150;
     this.imgHeight = 75;
   }
 
-  // Reverses direction when logo gets close to boundries of window
-  // TODO: there is a bug in here where if the logo is right on the line of the screenwidth it will get stuck there
-
   move() {
-    if (this.x + 75 >= width || this.x <= 75) {
-      this.speed_X *= -1;
+    // Sets the bounce boundary for X-axis
+    if (this.x > width - 75) {
+      this.speed_X = -this.initSpeed_X;
+    } else if (this.x < 75) {
+      this.speed_X = this.initSpeed_X;
     }
 
-    if (this.y + 40 >= height || this.y <= 40) {
-      this.speed_Y *= -1;
+    // Sets the bounce boundary for Y-axis
+    if (this.y + 40 > height) {
+      this.speed_Y = -this.initSpeed_Y;
+    } else if (this.y <= 40) {
+      this.speed_Y = this.initSpeed_Y;
     }
+
+    // Changes x and y coordinates changing the logos position on the screen
     this.x += this.speed_X;
     this.y += this.speed_Y;
   }

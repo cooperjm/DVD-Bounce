@@ -7,14 +7,11 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   for (let i = 0; i < numberOfLogos; i++) {
-    logos[i] = new DvdLogo(
-      random(75, windowWidth - 75),
-      random(40, windowHeight - 40)
-    );
+    logos[i] = new DvdLogo(random(windowWidth), random(windowHeight));
   }
 }
 
-// Logic for the logo/logos and canvas dimensions
+// Draws the canvas and the logos on the canvas
 function draw() {
   createCanvas(windowWidth, windowHeight);
   background(0);
