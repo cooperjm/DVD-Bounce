@@ -1,5 +1,11 @@
 let logos = [];
 let numberOfLogos = 1;
+let img;
+
+function preload() {
+  // img = loadImage("dvdlogo-04.svg");
+  img = loadImage("dvdVideo.png");
+}
 
 // Setting up the canvas with the images and window dimensions
 function setup() {
@@ -7,7 +13,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
 
   for (let i = 0; i < numberOfLogos; i++) {
-    logos[i] = new DvdLogo(random(windowWidth), random(windowHeight));
+    logos[i] = new DvdLogo(random(windowWidth), random(windowHeight), img);
   }
 }
 

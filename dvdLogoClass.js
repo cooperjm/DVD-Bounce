@@ -1,15 +1,15 @@
 // Logo class, takes x and y as arguments
 class DvdLogo {
-  constructor(posX, posY) {
+  constructor(posX, posY, img) {
     this.x = posX;
     this.y = posY;
     this.initSpeed_X = 2;
     this.initSpeed_Y = 3;
     this.speed_X = this.initSpeed_X;
     this.speed_Y = this.initSpeed_Y;
-    this.img = loadImage("dvdlogo-04.svg");
-    this.imgWidth = 150;
-    this.imgHeight = 75;
+    this.img = img;
+    this.imgWidth = 472 / 2;
+    this.imgHeight = 209 / 2;
   }
 
   move() {
